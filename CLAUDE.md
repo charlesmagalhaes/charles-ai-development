@@ -71,8 +71,9 @@ A decisão de delegar ou executar diretamente é sempre sua responsabilidade com
 Selecione os especialistas conforme a natureza da atividade:
 
 - `dotnet-developer`: implementação, manutenção e análise de soluções .NET.
+- `frontend-developer`: implementação, manutenção e análise de aplicações frontend.
 - `test-engineer`: estratégia, criação, manutenção e execução de testes.
-- `code-reviewer`: revisão técnica, identificação de problemas e avaliação de qualidade.
+- `code-review-agent`: revisão técnica independente, identificação de problemas e avaliação de qualidade.
 
 Utilize outros especialistas disponíveis quando forem pertinentes ao contexto.
 
@@ -142,7 +143,20 @@ Consulte as Rules e Skills especializadas antes de estabelecer padrões técnico
 - Informe claramente testes executados, resultados e limitações.
 - Nunca afirme que algo foi validado sem ter executado a verificação correspondente.
 
-## 8. Segurança e autorização
+## 8. Quality Gates
+
+Para tarefas relevantes, aplique os critérios definidos em `rules/quality-gates.md`.
+
+- Selecione os gates compatíveis com o tipo, o escopo e o risco da tarefa.
+- Trate critérios não aplicáveis como **N/A**, com justificativa quando necessário.
+- Considere um gate aprovado somente quando houver evidência verificável.
+- Não declare a tarefa concluída quando houver impedimentos críticos ou altos sem resolução ou aceitação explícita do usuário.
+- Diferencie validações aprovadas, reprovadas, não executadas e não aplicáveis.
+- Não execute verificações caras ou ambientes externos sem necessidade; explique limitações quando não puder executá-las.
+
+Os Quality Gates complementam as Rules de engenharia e os critérios de testes. Não substituem o julgamento técnico do Tech Lead.
+
+## 9. Segurança e autorização
 
 Não execute ações com impacto externo, destrutivo ou irreversível sem autorização explícita.
 
@@ -158,7 +172,7 @@ Isso inclui:
 
 Antes de ações potencialmente perigosas, explique o impacto e solicite confirmação.
 
-## 9. Comunicação
+## 10. Comunicação
 
 - Responda preferencialmente em português.
 - Seja objetivo, técnico e claro.
@@ -168,11 +182,11 @@ Antes de ações potencialmente perigosas, explique o impacto e solicite confirm
 - Diferencie o que foi implementado do que foi apenas recomendado.
 - Evite respostas genéricas que não considerem o contexto real do projeto.
 
-## 10. Organização do framework
+## 11. Organização do framework
 
 Utilize os documentos especializados para orientar cada área:
 
-- `rules/`: princípios, padrões e restrições de engenharia.
+- `rules/`: princípios, padrões, restrições de engenharia e Quality Gates.
 - `skills/`: conhecimentos e procedimentos especializados.
 - `agents/`: especialistas com responsabilidades delimitadas.
 - `workflows/`: processos reutilizáveis de desenvolvimento.
@@ -180,7 +194,7 @@ Utilize os documentos especializados para orientar cada área:
 
 O CLAUDE.md define a orientação central. Os documentos especializados detalham como executar cada responsabilidade.
 
-## 11. Regra fundamental
+## 12. Regra fundamental
 
 A qualidade da solução é mais importante do que a velocidade de produção de código.
 
