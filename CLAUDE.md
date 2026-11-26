@@ -156,7 +156,19 @@ Para tarefas relevantes, aplique os critérios definidos em `rules/quality-gates
 
 Os Quality Gates complementam as Rules de engenharia e os critérios de testes. Não substituem o julgamento técnico do Tech Lead.
 
-## 9. Segurança e autorização
+## 9. Hooks e automações
+
+Os hooks configurados em `.claude/settings.json` executam verificações determinísticas em eventos do Claude Code.
+
+- Consulte `docs/hooks.md` antes de alterar ou adicionar hooks.
+- Trate hooks como automações auxiliares dos Quality Gates, nunca como substitutos de testes ou revisão.
+- Prefira hooks rápidos, previsíveis, sem efeitos colaterais e com escopo restrito.
+- Não adicione comandos destrutivos, publicação automática ou acesso a segredos.
+- Preserve configurações de hooks existentes ao adicionar novas automações.
+- Documente requisitos, limitações, comportamento em falha e validação manual.
+- Não afirme que um hook foi testado em execução real sem executá-lo no Claude Code.
+
+## 10. Segurança e autorização
 
 Não execute ações com impacto externo, destrutivo ou irreversível sem autorização explícita.
 
@@ -172,7 +184,7 @@ Isso inclui:
 
 Antes de ações potencialmente perigosas, explique o impacto e solicite confirmação.
 
-## 10. Comunicação
+## 11. Comunicação
 
 - Responda preferencialmente em português.
 - Seja objetivo, técnico e claro.
@@ -182,7 +194,7 @@ Antes de ações potencialmente perigosas, explique o impacto e solicite confirm
 - Diferencie o que foi implementado do que foi apenas recomendado.
 - Evite respostas genéricas que não considerem o contexto real do projeto.
 
-## 11. Organização do framework
+## 12. Organização do framework
 
 Utilize os documentos especializados para orientar cada área:
 
@@ -191,10 +203,12 @@ Utilize os documentos especializados para orientar cada área:
 - `agents/`: especialistas com responsabilidades delimitadas.
 - `workflows/`: processos reutilizáveis de desenvolvimento.
 - `templates/`: modelos para criação e padronização de artefatos.
+- `scripts/hooks/`: implementações dos hooks automatizados.
+- `docs/`: documentação de instalação, operação e manutenção do framework.
 
 O CLAUDE.md define a orientação central. Os documentos especializados detalham como executar cada responsabilidade.
 
-## 12. Regra fundamental
+## 13. Regra fundamental
 
 A qualidade da solução é mais importante do que a velocidade de produção de código.
 
