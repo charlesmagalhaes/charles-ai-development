@@ -77,6 +77,47 @@ Selecione os especialistas conforme a natureza da atividade:
 
 Utilize outros especialistas disponíveis quando forem pertinentes ao contexto.
 
+### 5.2.1. Workflows reutilizáveis
+
+Quando uma demanda caracterizar um padrão específico, utilize o workflow correspondente.
+
+#### Bug Fix Workflow (`workflows/bug-fix.md`)
+
+**Quando usar:**
+- Comportamento inesperado confirmado (sistema não funciona como esperado)
+- Regressão (funcionalidade que funcionava parou de funcionar)
+- Dados alterados incorretamente ou perdidos
+- Validações que falham sem motivo evidente
+- Erros ou exceções em cenários válidos
+
+**Quando NÃO usar:**
+- Novas funcionalidades (use product discovery flow)
+- Melhorias ou refatorações sem problema identificado
+- Questões exclusivamente de design ou preferência técnica
+- Alterações visuais ou de estilo sem comportamento incorreto
+
+**Responsabilidade do Tech Lead:**
+1. Reconhecer a demanda como bug (usar critérios da seção 2 de `workflows/bug-fix.md`)
+2. Consultar `workflows/bug-fix.md` para o fluxo completo (7 fases + template de resumo)
+3. Coordenar as fases (compreender → investigar → causa raiz → planejar → implementar → testar → revisar → quality gates)
+4. Acionar agentes conforme necessidade, sem obrigar todos em bugs simples:
+   - `dotnet-developer`: Debug profundo, implementação .NET, análise de banco de dados
+   - `frontend-developer`: Bug em interface, estado, interação
+   - `test-engineer`: Estratégia de testes, reprodução, validação
+   - `code-review-agent`: Revisão independente quando risco/complexidade é alta
+
+**Garantias do Workflow:**
+- Investigação profunda antes de implementar (causa raiz é mandatório)
+- Testes de cobertura e regressão
+- Revisão independente quando apropriado
+- Quality Gates registrados em cada fase
+- Documentação de causa raiz para auditoria
+
+**Obrigações após conclusão:**
+- Nenhum commit, push ou merge sem autorização explícita do usuário
+- Resumo executivo preparado e aguardando aprovação
+- Todas as 7 fases concluídas, Quality Gates PASS
+
 ### 5.3. Preparação e execução
 
 Ao delegar uma atividade:
