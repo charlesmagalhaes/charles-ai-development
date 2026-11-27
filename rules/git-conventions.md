@@ -12,21 +12,27 @@ Utilize Conventional Commits como padrão para mensagens de commit.
 
 ### Formato obrigatório
 
-`<tipo>(<escopo>): [<numero-da-subtask>] <título curto>`
+**Projetos corporativos (com card/subtask):**
+```
+<tipo>(<escopo>): [<numero-do-card-ou-subtask>] <título curto>
+```
 
-Exemplo:
+**Projetos pessoais (sem card/subtask):**
+```
+<tipo>(<escopo>): [pessoal] <título curto>
+```
 
-`fix(inscricao): [483663] Corrige validação dos dados pessoais`
+Exemplos:
 
-Outro exemplo:
-
-`ci(): [483663] Migra worker-status-inscricao-processo para .NET 10`
+- Corporativo: `fix(inscricao): [483663] Corrige validação dos dados pessoais`
+- Corporativo: `ci(): [483663] Migra worker-status-inscricao-processo para .NET 10`
+- Pessoal: `feat(workflow): [pessoal] Implementa Workflow Code Refactoring com 8 fases`
 
 ### Estrutura
 
 - **Tipo:** representa a finalidade principal da alteração.
 - **Escopo:** identifica o contexto ou componente afetado, quando aplicável.
-- **Número da subtask:** identifica a atividade relacionada.
+- **Identificador:** número da card/subtask (projetos corporativos) ou `pessoal` (projetos pessoais).
 - **Título:** descreve objetivamente a alteração.
 
 O escopo é opcional. Quando não houver um escopo claro, utilize parênteses vazios.
@@ -92,12 +98,13 @@ Não classifique commits apenas pela extensão, localização ou nome dos arquiv
 
 Se a intenção da alteração não estiver clara, solicite esclarecimentos.
 
-## 6. Número da subtask
+## 6. Identificador do commit
 
-- Identifique o número da subtask antes de sugerir o commit.
-- Não invente identificadores.
+- **Para projetos corporativos:** Identifique o número do card ou subtask antes de sugerir o commit.
+- **Para projetos pessoais:** Utilize `pessoal` quando não houver card ou subtask associado.
+- Não invente identificadores numéricos.
 - Não utilize números de outras atividades sem confirmação.
-- Se o número não estiver disponível, solicite essa informação.
+- Se o número não estiver disponível em projeto corporativo, solicite essa informação.
 - Não remova o identificador do formato obrigatório sem autorização.
 
 ## 7. Padrão do título

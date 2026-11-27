@@ -157,6 +157,52 @@ Quando uma demanda caracterizar um padrão específico, utilize o workflow corre
 - Todas as 7 fases concluídas, Quality Gates PASS
 - Nenhuma mudança de escopo sem autorização do solicitante
 
+#### Code Refactoring Workflow (`workflows/code-refactoring.md`)
+
+**Quando usar:**
+- Código complexo, difícil de entender ou manter
+- Duplicação de lógica em múltiplos locais
+- Violação de princípios SOLID
+- Reduzir acoplamento ou aumentar coesão
+- Melhorar performance sem alterar contrato
+- Código legado que precisa de melhor estrutura
+
+**Quando NÃO usar:**
+- Implementar novo comportamento (use Feature Development Workflow)
+- Corrigir comportamento incorreto (use Bug Fix Workflow)
+- Sem objetivo claro
+- Para introduzir novas funcionalidades
+
+**Responsabilidade do Tech Lead:**
+1. Reconhecer a demanda como code refactoring (usar critérios da seção 2 de `workflows/code-refactoring.md`)
+2. Consultar `workflows/code-refactoring.md` para o fluxo completo (8 fases + template de resumo)
+3. Coordenar as fases (compreender → analisar → avaliar → planejar → implementar → testar → revisar → quality gates)
+4. Acionar agentes conforme necessidade, sem obrigar todos em refatorações simples:
+   - `dotnet-developer`: Implementação backend, análise de arquitetura
+   - `frontend-developer`: Refactoring frontend, design de componentes
+   - `test-engineer`: Estratégia de testes, validação, cobertura
+   - `code-review-agent`: Revisão independente quando risco/complexidade é alta
+5. Garantir preservação completa de comportamento funcional
+6. Nunca executar operações Git destrutivas (git reset) sem investigação e autorização
+7. Nunca misturar refactoring com bug fix ou feature
+
+**Garantias do Workflow:**
+- Melhoria no aspecto definido como objetivo (sem obrigar melhorias simultâneas)
+- Comportamento funcional preservado (com evidências proporcionais ao risco)
+- Validação comparativa com baseline (sem novas regressões atribuíveis à refactoring)
+- Nenhuma regressão silenciosa
+- Nenhuma mistura com bug fix ou feature
+- Preservação completa de alterações do usuário
+- Reversão segura e investigativa (nunca automática/destrutiva)
+
+**Obrigações após conclusão:**
+- Nenhum commit, push ou merge sem autorização explícita do usuário
+- Resumo executivo preparado com evidências de preservação
+- Todas as 8 fases concluídas, Quality Gates PASS
+- Comportamento preservado documentado (com limitações se houver)
+- Riscos residuais comunicados
+- Refatoração concluída e validada, aguardando autorização para próximas operações Git
+
 ### 5.3. Preparação e execução
 
 Ao delegar uma atividade:
