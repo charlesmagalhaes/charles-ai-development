@@ -31,7 +31,7 @@ test("não considera duplicidade entre objetos diferentes", () => {
 });
 
 test("trata corretamente nomes com caracteres escapados", () => {
-  const json = '{ "nome\\\\u0020com\\\\u0020espaço": 1, "nome com espaço": 2 }';
+  const json = '{ "nome\\u0020com\\u0020espaço": 1, "nome com espaço": 2 }';
   const duplicates = findDuplicateKeys(json);
   assert.equal(duplicates.length, 1);
   assert.equal(duplicates[0].key, "nome com espaço");
@@ -39,6 +39,6 @@ test("trata corretamente nomes com caracteres escapados", () => {
 });
 
 test("ignora textos que parecem propriedades duplicadas dentro de strings", () => {
-  const json = '{"mensagem":"\\\\"ativo\\\\": true, \\\\"ativo\\\\": false"}';
+  const json = JSON.stringify({ mensagem: '"ativo": true, "ativo": false' });
   assert.deepEqual(findDuplicateKeys(json), []);
 });
